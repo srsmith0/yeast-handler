@@ -18,10 +18,8 @@ export default function Home() {
           Welcome to the Yeast Gaucho
         </h1>
         <div>
-          Choose a login:
           <br></br>
-          <button onClick={() => router.push('/viewLogin')}>View</button>
-          <button onClick={() => router.push('/adminLogin')}>Admin</button>
+          <button onClick={() => router.push('/login')}>Login</button>
         </div>
       </main>
 
