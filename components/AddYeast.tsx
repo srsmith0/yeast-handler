@@ -3,14 +3,14 @@ import {useState} from 'react';
 import Input from '../utils/Input';
 
 const AddYeast = () => {
-    const [strain, setStrain] = useState('');
-    const [gen, setGen] = useState('');
-    const [received, setReceived] = useState('');
-    const [countAtPitch, setCountAtPitch] = useState('');
-    const [source, setSource] = useState('');
-    const [supplier, setSupplier] = useState('');
-    const [quantity, setQuantity] = useState('');
-    const [propType, setPropType] = useState('');
+    const [strain, setStrain] = useState<String>('');
+    const [gen, setGen] = useState<Number>(0);
+    const [received, setReceived] = useState<String>('');
+    const [countAtPitch, setCountAtPitch] = useState<String>('');
+    const [source, setSource] = useState<String>('');
+    const [supplier, setSupplier] = useState<String>('');
+    const [quantity, setQuantity] = useState<String>('');
+    const [propType, setPropType] = useState<String>('');
 
     return (
         <>

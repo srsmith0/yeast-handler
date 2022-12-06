@@ -3,8 +3,8 @@ import {useState} from 'react';
 import Input from '../utils/Input';
 
 const Login = () => {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+    const [username, setUsername] = useState<String>('');
+    const [password, setPassword] = useState<String>('');
 
 
     const handleChange = (value, changeState) =>{
