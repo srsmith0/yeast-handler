@@ -1,4 +1,5 @@
 import {useState} from 'react';
+
 import Input from '../utils/Input';
 
 const Login = () => {
@@ -10,7 +11,6 @@ const Login = () => {
         changeState(value);
     };
 
-   // const Input = ({value, valueChange, name, title})
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(username)

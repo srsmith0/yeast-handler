@@ -1,10 +1,11 @@
 import { useState } from 'react';
+import AddYeast from '../../components/AddYeast';
 
 const Dashboard = () => {
 
     return (
         <>
-        I'm a dashboard
+            <AddYeast />
         </>
     );
 };

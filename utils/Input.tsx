@@ -1,4 +1,3 @@
-
 const Input = ({value, valueChange, name, title}) => {
 
     return (
