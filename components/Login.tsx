@@ -6,12 +6,8 @@ const Login = () => {
     const [username, setUsername] = useState<String>('');
     const [password, setPassword] = useState<String>('');
 
-
-    const handleChange = (value, changeState) =>{
-        changeState(value);
-    };
-
     const handleSubmit = (e) => {
+        //TODO: add authentication to this
         e.preventDefault();
         console.log(username)
         setUsername('');
@@ -20,13 +16,8 @@ const Login = () => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <Input value={username} valueChange={setUsername} name="username" title="Username: " />
-            <Input value={password} valueChange={setPassword} name="password" title="Password: " />
-            {/* <label htmlFor="username">Username: </label>
-            <input type="text" name="username" value={username} onChange={((e) => handleChange(e.target.value, setUsername))} />
-            <label htmlFor="password">Password: </label>
-            <input type="password" name="password" value={password} onChange={(e) => handleChange(e.target.value, setPassword)} />
-             */}
+            <Input required={true} value={username} valueChange={setUsername} name="username" title="Username: " />
+            <Input required={true} value={password} valueChange={setPassword} name="password" title="Password: " />
             <input type="submit" value="Login" />
         </form>
     )

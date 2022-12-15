@@ -9,14 +9,14 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Yeast Gaucho</title>
-        <meta name="Yeast Gaucho" content="Yeast management in one place" />
+        <title>Yeast Handler</title>
+        <meta name="Yeast Handler" content="Yeast management in one place" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to the Yeast Gaucho
+          Howdy! <br /> Welcome to Yeast Handler
         </h1>
         <div>
           <br></br>

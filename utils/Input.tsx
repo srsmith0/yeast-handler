@@ -1,11 +1,12 @@
-const Input = ({value, valueChange, name, title}) => {
+const Input = ({value, valueChange, name, title, required}) => {
   
 
     return (
         <>
             <label htmlFor={name}>{title}</label>
-            <input 
-                type={name != "password" ? "text" : "password"} 
+            <input
+                required={required ? true : false} 
+                type={name === "password" ? "password" : "text"} 
                 name={name} 
                 value={value} 
                 onChange={((e) => valueChange(e.target.value))} 
