@@ -2,7 +2,7 @@ const Input = ({value, valueChange, name, title, required}) => {
   
 
     return (
-        <>
+        <div>
             <label htmlFor={name}>{title}</label>
             <input
                 required={required ? true : false} 
@@ -11,7 +11,7 @@ const Input = ({value, valueChange, name, title, required}) => {
                 value={value} 
                 onChange={((e) => valueChange(e.target.value))} 
             />
-        </>
+        </div>
     )
 };
 

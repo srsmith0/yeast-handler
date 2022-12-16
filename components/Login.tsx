@@ -7,7 +7,7 @@ const Login = () => {
     const [password, setPassword] = useState<String>('');
 
     const handleSubmit = (e) => {
-        //TODO: add authentication to this
+        //TODO: add authentication to this 
         e.preventDefault();
         console.log(username)
         setUsername('');
