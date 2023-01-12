@@ -22,11 +22,12 @@ const AddYeast = () => {
         supplier,
         quantity,
         propType
-    }
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault()
         //TODO: add yeast object to database, POST request
-        //TODO: add form reset for react
+        //TODO: add form reset for react instead of each state
         console.log(yeast)
         setStrain('')
         setGen(0)
@@ -36,7 +37,7 @@ const AddYeast = () => {
         setSupplier('')
         setQuantity('')
         setPropType('')
-    }
+    };
 
     return (
         <>
