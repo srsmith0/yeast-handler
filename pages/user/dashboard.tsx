@@ -11,6 +11,9 @@ const Dashboard = () => {
             <DashButton>
                 <Link href='/user/fermentations'>Current Yeast</Link>
             </DashButton>
+            <DashButton>
+                <Link href='/user/pitches'>Pitch Schedule</Link>
+            </DashButton>
         </>
     );
 };
