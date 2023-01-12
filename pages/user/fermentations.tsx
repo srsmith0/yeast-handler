@@ -26,7 +26,9 @@ const Fermentations = () => {
                     },
                     '/user/yeast-details',
                 )}>
-                        {y.strain}, {y.current_tank}
+                        {y.strain} <br />
+                        {y.current_tank} <br />
+                        Gen {y.gen}
                 </YeastButton>)}
             <div><HomeButton /></div>
         </>
