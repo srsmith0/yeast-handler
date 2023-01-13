@@ -6,34 +6,34 @@ import styled from 'styled-components';
 import { useRouter } from "next/router";
 
 const Fermentations = () => {
-    const [yeast, setYeast] = useState([])
+    const [allYeast, setAllYeast] = useState([]);
 
     const router = useRouter();
 
     useEffect(() => {
         fetch("../api/dummyData")
         .then(res => res.json())
-        .then(data => setYeast(data))
-    }, [])
+        .then(data => setAllYeast(data))
+    }, []);
+
 
     return (
         <>
-            {yeast.map(y => 
-                <YeastButton onClick={() => router.push(
-                    {
-                        pathname: '/user/yeast-details',
-                        query: y
-                    },
-                    '/user/yeast-details',
-                )}>
+            {allYeast.map(y =>
+                <YeastButton key={y.id} onClick={() => router.push(`/user/yeast-details/${y.id}`)}>
                         {y.strain} <br />
                         {y.current_tank} <br />
                         Gen {y.gen}
-                </YeastButton>)}
+                </YeastButton>
+            )}
+
             <div><HomeButton /></div>
         </>
     )
 };
+
+export default Fermentations;
+
 
 const YeastButton = styled.button`
     color: black;
@@ -47,5 +47,3 @@ const YeastButton = styled.button`
         background-color: #8d885f;
     }
 `
-
-export default Fermentations;
