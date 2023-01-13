@@ -1,20 +1,23 @@
-//TODO: add yeast id dynamically to address. Use params to search database for yeast ID/useEffect so data stays on page on refresh
-
-import { useRouter } from "next/router";
+import { GetServerSideProps, NextPageContext } from "next";
 import { useEffect, useState } from "react";
 
 import HomeButton from "../../../utils/HomeButton";
 
-const YeastDetails = () => {
+export const getServerSideProps: GetServerSideProps = async (context: NextPageContext) => { {
+    const { query } = context;
+    return { props: { query } };
+}}
+
+const YeastDetails = ({ query }) => {
     const [ allYeast, setAllYeast ] = useState([])
     const [ yeast, setYeast ] = useState(null)
 
-    const router = useRouter();
-    const yeastID = parseInt(router.query.id);
+    const yeastID = parseInt(query.id)
 
     useEffect(() => {
         getYeasts();
-        findYeast();
+        setYeast(allYeast.find(y => y.id === yeastID))
+        //won't update yeast even though allyeast is a full array
         console.log(yeast)
     }, [] );
 
@@ -24,17 +27,12 @@ const YeastDetails = () => {
         .then(data => setAllYeast(data));
     };
 
-    const findYeast = () => {
-        console.log(yeastID)
-        let myYeast = allYeast.find(y => y.id === yeastID)
-        setYeast(myYeast)
-    }
-    if(yeast === null){
+    if(yeast === null || undefined){
         return 'Loading..'
     }
     return (
         <>
-        {/* <p>Strain: {yeast.strain}</p>
+        <p>Strain: {yeast.strain}</p>
         <p>Brand: {yeast.brand}</p>
         <p>Volume: {yeast.size}</p>
         <p>Count at Pitch: {yeast.count_at_pitch}</p>
@@ -45,7 +43,7 @@ const YeastDetails = () => {
         <p>Date Received: {yeast.received}</p>
         <p>Vendor: {yeast.purchased_from}</p>
         <p>Quantity Purchased: {yeast.quantity}</p>
-        <p>Prop Type: {yeast.prop_type}</p> */}
+        <p>Prop Type: {yeast.prop_type}</p>
         <HomeButton />
         </>
     )
