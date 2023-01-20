@@ -15,11 +15,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 };
 
 const YeastDetails = ({ query, yeasts }) => {   
-    const yeastID = parseInt(query.id)
+    const yeastID:number = parseInt(query.id)
     const yeast = yeasts.find(y => y.id === yeastID);
 
     return (
         <>     
+        {console.log('loaded')}
         <p>Strain: {yeast.strain}</p>
         <p>Brand: {yeast.brand}</p>
         <p>Volume: {yeast.size}</p>
