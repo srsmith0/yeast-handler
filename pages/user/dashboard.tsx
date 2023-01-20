@@ -5,15 +5,16 @@ const Dashboard = () => {
 
     return (
         <>
-            <DashButton>
-                <Link href='/user/addyeast'>Add New Yeast</Link>
-            </DashButton>
-            <DashButton>
-                <Link href='/user/fermentations'>Current Yeast</Link>
-            </DashButton>
-            <DashButton>
-                <Link href='/user/pitches'>Pitch Schedule</Link>
-            </DashButton>
+            <Link href='/user/addyeast'>
+                <DashButton>Add New Yeast</DashButton>
+            </Link>
+            <Link href='/user/fermentations'>
+                <DashButton>Current Yeast</DashButton>
+            </Link>
+            <Link href='/user/pitches'>
+                <DashButton>Pitch Schedule</DashButton>
+            </Link>
+            
         </>
     );
 };

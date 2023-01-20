@@ -2,7 +2,7 @@ import Link from "next/link";
 import styled from 'styled-components';
 
 const HomeButton = () => {
-    return <HomeLink><Link href='/user/dashboard'>Go Home</Link></HomeLink>
+    return <Link href='/user/dashboard'><HomeLink>Go Home</HomeLink></Link>
 };
 
 export default HomeButton;
