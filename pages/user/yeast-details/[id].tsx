@@ -1,5 +1,4 @@
 import { GetServerSideProps } from "next";
-import { useEffect, useState } from "react";
 
 import HomeButton from "../../../utils/HomeButton";
 
@@ -15,22 +14,10 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   };
 };
 
-const YeastDetails = ({ query, yeasts }) => {
-    const [ yeast, setYeast ] = useState({})
-
+const YeastDetails = ({ query, yeasts }) => {   
     const yeastID = parseInt(query.id)
+    const yeast = yeasts.find(y => y.id === yeastID);
 
-    useEffect(() => {
-        setYeast(yeasts.find(y => y.id === yeastID));
-    }, [] );
-
-    // if(!yeast){
-    //     return (
-    //     <>
-    //     <h1>Loading...</h1>
-    //     </>
-    //     )
-    // }
     return (
         <>     
         <p>Strain: {yeast.strain}</p>
