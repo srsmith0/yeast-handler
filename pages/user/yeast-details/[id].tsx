@@ -1,37 +1,38 @@
-import { GetServerSideProps, NextPageContext } from "next";
+import { GetServerSideProps } from "next";
 import { useEffect, useState } from "react";
 
 import HomeButton from "../../../utils/HomeButton";
 
-export const getServerSideProps: GetServerSideProps = async (context: NextPageContext) => { {
-    const { query } = context;
-    return { props: { query } };
-}}
+export const getServerSideProps: GetServerSideProps = async (context) => {
+    const { query } = context
+    const res = await fetch("http://localhost:3000/api/dummyData")
+    const yeasts = await res.json()
 
-const YeastDetails = ({ query }) => {
-    const [ allYeast, setAllYeast ] = useState([])
-    const [ yeast, setYeast ] = useState(null)
+  return {
+    props: {
+      query, yeasts
+    },
+  };
+};
+
+const YeastDetails = ({ query, yeasts }) => {
+    const [ yeast, setYeast ] = useState({})
 
     const yeastID = parseInt(query.id)
 
     useEffect(() => {
-        getYeasts();
-        setYeast(allYeast.find(y => y.id === yeastID))
-        //won't update yeast even though allyeast is a full array
-        console.log(yeast)
+        setYeast(yeasts.find(y => y.id === yeastID));
     }, [] );
 
-    const getYeasts = () => {
-        fetch("../../api/dummyData")
-        .then(res => res.json())
-        .then(data => setAllYeast(data));
-    };
-
-    if(yeast === null || undefined){
-        return 'Loading..'
-    }
+    // if(!yeast){
+    //     return (
+    //     <>
+    //     <h1>Loading...</h1>
+    //     </>
+    //     )
+    // }
     return (
-        <>
+        <>     
         <p>Strain: {yeast.strain}</p>
         <p>Brand: {yeast.brand}</p>
         <p>Volume: {yeast.size}</p>
@@ -43,7 +44,7 @@ const YeastDetails = ({ query }) => {
         <p>Date Received: {yeast.received}</p>
         <p>Vendor: {yeast.purchased_from}</p>
         <p>Quantity Purchased: {yeast.quantity}</p>
-        <p>Prop Type: {yeast.prop_type}</p>
+        <p>Prop Type: {yeast.prop_type}</p> 
         <HomeButton />
         </>
     )
