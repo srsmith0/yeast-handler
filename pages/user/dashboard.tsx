@@ -5,6 +5,7 @@ const Dashboard = () => {
 
     return (
         <>
+            <DashDiv>
             <Link href='/user/addyeast'>
                 <DashButton>Add New Yeast</DashButton>
             </Link>
@@ -14,12 +15,18 @@ const Dashboard = () => {
             <Link href='/user/pitches'>
                 <DashButton>Pitch Schedule</DashButton>
             </Link>
+            </DashDiv>
             
         </>
     );
 };
 
 export default Dashboard;
+
+const DashDiv = styled.div`
+    text-align: center;
+    padding-top: 10rem;
+`
 
 const DashButton = styled.button `
     height: 5rem;

@@ -21,9 +21,10 @@ const Fermentations = () => {
         <>
             {allYeast.map(y =>
                 <YeastButton key={y.id} onClick={() => router.push(`/user/yeast-details/${y.id}`)}>
+                        {y.brand} <br />
                         {y.strain} <br />
+                        Gen {y.gen} <br />
                         {y.current_tank} <br />
-                        Gen {y.gen}
                 </YeastButton>
             )}
 

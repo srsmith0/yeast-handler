@@ -2,7 +2,7 @@ import {useState} from 'react';
 import styled from 'styled-components';
 
 import Input from '../utils/Input';
-
+//add prop info based on type: 2 step, direct, 1 step. include wort brand and volume and plato
 const AddYeast = () => {
     const [strain, setStrain] = useState<String>('');
     const [gen, setGen] = useState<Number>(0);
@@ -11,7 +11,23 @@ const AddYeast = () => {
     const [source, setSource] = useState<String>('');
     const [supplier, setSupplier] = useState<String>('');
     const [quantity, setQuantity] = useState<String>('');
-    const [propType, setPropType] = useState<String>('');
+    const [propType, setPropType] = useState<String>('Direct');
+    const [propWort, setPropWort] = useState<String>('');
+    const [propVolume, setPropVolume] = useState<String>('');
+    const [propPlato, setPropPlato] = useState<String>('');
+    const [propWortTwo, setPropWortTwo] = useState<String>('');
+    const [propVolumeTwo, setPropVolumeTwo] = useState<String>('');
+    const [propPlatoTwo, setPropPlatoTwo] = useState<String>('');
+
+    const propInfo = {
+        propType,
+        propWort,
+        propVolume,
+        propPlato,
+        propWortTwo,
+        propVolumeTwo,
+        propPlatoTwo,
+    }
 
     let yeast = {
         strain,
@@ -21,8 +37,9 @@ const AddYeast = () => {
         source,
         supplier,
         quantity,
-        propType
+        propInfo
     };
+
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -37,6 +54,14 @@ const AddYeast = () => {
         setSupplier('')
         setQuantity('')
         setPropType('')
+        setPropWort('')
+        setPropVolume('')
+        setPropPlato('')
+    };
+
+    const changeProp = (e) => {
+        e.preventDefault();
+        setPropType(e.target.value);
     };
 
     return (
@@ -64,9 +89,36 @@ const AddYeast = () => {
                     <Input required={true} value={quantity} valueChange={setQuantity} name="quantity" title="Quantity: " />
                 </YeastInput>
                 <YeastInput>
-                    <Input required={true} value={propType} valueChange={setPropType} name="propType" title="Prop Type: " />
+                    <label htmlFor="propType">Choose Prop Type: </label>
+                    <select id="propType" name="propType" onChange={changeProp}>
+                        <option value="Direct" selected>Direct</option>
+                        <option value="One Step">One Step</option>
+                        <option value="Two Step">Two Step</option>
+                    </select>
+                    {/* <Input required={true} value={propType} valueChange={setPropType} name="propType" title="Prop Type: " /> */}
                 </YeastInput>
-                <AddYeastButton type="submit" value="Add" />
+                {propType==="One Step" ? 
+                <YeastInput>
+                    <Input required={true} value={propWort} valueChange={setPropWort} name="propWort" title="Prop Brand: " /> 
+                    <Input required={true} value={propVolume} valueChange={setPropVolume} name="propVolume" title="Prop Volume: " />
+                    <Input required={true} value={propPlato} valueChange={setPropPlato} name="propPlato" title="Prop Plato: " />
+                </YeastInput> 
+                : null}
+                {propType==="Two Step" ?
+                 <YeastInput>
+                    <p>First Prop:</p>
+                    <Input required={true} value={propWort} valueChange={setPropWort} name="propWort" title="Prop Brand: " /> 
+                    <Input required={true} value={propVolume} valueChange={setPropVolume} name="propVolume" title="Prop Volume: " />
+                    <Input required={true} value={propPlato} valueChange={setPropPlato} name="propPlato" title="Prop Plato: " />
+                    <p>Second Prop:</p>
+                    <Input required={true} value={propWortTwo} valueChange={setPropWortTwo} name="propWortTwo" title="Prop Brand: " /> 
+                    <Input required={true} value={propVolumeTwo} valueChange={setPropVolumeTwo} name="propVolumeTwo" title="Prop Volume: " />
+                    <Input required={true} value={propPlatoTwo} valueChange={setPropPlatoTwo} name="propPlatoTwo" title="Prop Plato: " />
+                </YeastInput> 
+                : null}
+
+
+                <AddYeastButton type="submit"> Add </AddYeastButton>
             </YeastForm>
 
         </>
@@ -77,13 +129,13 @@ export default AddYeast;
    // const Input = ({value, valueChange, name, title})
 const YeastForm = styled.form `
     text-align: center;
-
-`
-const YeastInput = styled.span `
     padding: 3rem;
 
 `
+const YeastInput = styled.span `
+    margin: 1rem;
+`
 
-const AddYeastButton = styled.input `
+const AddYeastButton = styled.button `
     margin-top: 2rem;
 `
