@@ -2,7 +2,7 @@ import {useState} from 'react';
 import styled from 'styled-components';
 
 import Input from '../utils/Input';
-//add prop info based on type: 2 step, direct, 1 step. include wort brand and volume and plato
+
 const AddYeast = () => {
     const [strain, setStrain] = useState<String>('');
     const [gen, setGen] = useState<Number>(0);
@@ -95,7 +95,6 @@ const AddYeast = () => {
                         <option value="One Step">One Step</option>
                         <option value="Two Step">Two Step</option>
                     </select>
-                    {/* <Input required={true} value={propType} valueChange={setPropType} name="propType" title="Prop Type: " /> */}
                 </YeastInput>
                 {propType==="One Step" ? 
                 <YeastInput>
@@ -116,7 +115,6 @@ const AddYeast = () => {
                     <Input required={true} value={propPlatoTwo} valueChange={setPropPlatoTwo} name="propPlatoTwo" title="Prop Plato: " />
                 </YeastInput> 
                 : null}
-
 
                 <AddYeastButton type="submit"> Add </AddYeastButton>
             </YeastForm>

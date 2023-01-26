@@ -16,10 +16,24 @@ const Fermentations = () => {
         .then(data => setAllYeast(data))
     }, []);
 
+    const sortYeast = (a, b) => {
+        const tankA = a.current_tank;
+		const tankB = b.current_tank;
+
+		let comparison = 0;
+		if (tankA > tankB) {
+			comparison = 1;
+		} else if (tankA < tankB) {
+			comparison = -1;
+		}
+		return comparison;
+    };
+
+    const sortedYeast = allYeast.sort(sortYeast);
 
     return (
         <>
-            {allYeast.map(y =>
+            {sortedYeast.map(y =>
                 <YeastButton key={y.id} onClick={() => router.push(`/user/yeast-details/${y.id}`)}>
                         {y.brand} <br />
                         {y.strain} <br />
