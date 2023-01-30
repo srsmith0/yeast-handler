@@ -20,7 +20,6 @@ const YeastDetails = ({ query, yeasts }) => {
 
     return (
         <>     
-        {console.log('loaded')}
         <p>Strain: {yeast.strain}</p>
         <p>Brand: {yeast.brand}</p>
         <p>Volume: {yeast.size}</p>
