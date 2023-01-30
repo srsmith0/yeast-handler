@@ -49,6 +49,34 @@ export default function handler(
             prop_type : "One Step",
             count_at_pitch : "6.5 million cells/mL"
 
-    }]
+    },
+     {  id: 4,
+      strain : "Augustiner",
+      gen : 2,
+      received : "03/02/2022",
+      current_tank: "FV03",
+      brand: "801",
+      size: "120 bbls",
+      source_brand: "Yard Sale",
+      source : "FV15",
+      purchased_from : "BSI",
+      quantity : "70 L",
+      prop_type : "Two Step",
+      count_at_pitch : "8 million cells/mL"
+},
+ {  id: 5,
+  strain : "London III",
+  gen : 2,
+  received : "03/02/2022",
+  current_tank: "FV29",
+  brand: "Cutthroat",
+  size: "480 bbls",
+  source_brand: "Hazy Nosh",
+  source : "FV10",
+  purchased_from : "BSI",
+  quantity : "70 L",
+  prop_type : "One Step",
+  count_at_pitch : "8 million cells/mL"
+}]
 )};
 

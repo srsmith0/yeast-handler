@@ -30,10 +30,10 @@ const Fermentations = () => {
 
     const sortedYeast = allYeast.sort(sortYeast);
 
-    const findYeast = async (id) => {
+    const findYeast = async (ID) => {
         const res = await fetch('http://localhost:3000/api/dummyData')
         const yeasts = await res.json()
-        setSpecificYeast(yeasts.find(y => y.id === id))
+        setSpecificYeast(yeasts.find(y => y.id === ID))
     };
 
     const hideInfo = () => {
