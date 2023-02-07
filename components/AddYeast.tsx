@@ -40,12 +40,7 @@ const AddYeast = () => {
         propInfo
     };
 
-
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        //TODO: add yeast object to database, POST request
-        //TODO: add form reset for react instead of each state
-        console.log(yeast)
+    const clearData = () => {
         setStrain('')
         setGen(0)
         setReceived('')
@@ -57,6 +52,14 @@ const AddYeast = () => {
         setPropWort('')
         setPropVolume('')
         setPropPlato('')
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        //TODO: add yeast object to database, POST request
+        //TODO: add form reset for react instead of each state
+        console.log(yeast)
+        clearData();
     };
 
     const changeProp = (e) => {
@@ -124,7 +127,7 @@ const AddYeast = () => {
 };
 
 export default AddYeast;
-   // const Input = ({value, valueChange, name, title})
+
 const YeastForm = styled.form `
     text-align: center;
     padding: 3rem;
@@ -133,7 +136,6 @@ const YeastForm = styled.form `
 const YeastInput = styled.span `
     margin: 1rem;
 `
-
 const AddYeastButton = styled.button `
     margin-top: 2rem;
 `
