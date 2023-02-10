@@ -57,6 +57,15 @@ const AddYeast = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         //TODO: add yeast object to database, POST request
+        // fetch('http://localhost:3000/api/yeast', {
+        //     method: "POST",
+        //     headers: {
+        //         'Accept': 'application/json',
+        //         'Content-Type': 'application/json'
+        //     }, 
+        //     body: JSON.stringify(yeast)
+        // }).then(response => console.log(response))
+        
         //TODO: add form reset for react instead of each state
         console.log(yeast)
         clearData();

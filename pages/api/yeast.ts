@@ -5,9 +5,10 @@ export default async function handler(req, res) {
   const db = client.db("nextjs-mongodb-demo");
   switch (req.method) {
     case "POST":
-      let bodyObject = JSON.parse(req.body);
-      let myYeast = await db.collection("yeast").insertOne(bodyObject);
-      res.json(myYeast.ops[0]);
+      // let bodyObject = JSON.parse(req.body);
+      // let myYeast = await db.collection("yeast").insertOne(bodyObject);
+      // res.json(myYeast.ops[0]);
+      res.json({status: 200, data: "oh hi there!"})
       break;
     case "GET":
       const allYeast = await db.collection("allYeast").find({}).toArray();

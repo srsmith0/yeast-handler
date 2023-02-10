@@ -4,27 +4,28 @@ import styled from 'styled-components';
 
 import Input from '../utils/Input';
 
-
-
 const AddBrew = () => {
     const [brand, setBrand] = useState('');
     const [fermenter, setFermenter] = useState('');
     const [batchSize, setBatchSize] = useState('');
     const [gravity, setGravity] = useState('');
+    const [brewDate, setBrewDate] = useState('');
     
     const brew = {
         brand,
         fermenter,
         batchSize,
         gravity
-    }
+    };
 
     const clearData = () => {
         setBrand('');
         setFermenter('');
         setBatchSize('');
         setGravity(''); 
-    }
+    };
+
+
     const handleSubmit = (e) => {
         e.preventDefault()
         //TODO: post to database
@@ -47,10 +48,10 @@ const AddBrew = () => {
                <BrewInput>
                     <Input required={true} value={gravity} valueChange={setGravity} name="gravity" title="Gravity: " />
                 </BrewInput>
-                  {/*<BrewInput>
-                    <Input required={true} value={source} valueChange={setSource} name="source" title="Source: " />
+                  <BrewInput>
+                    <Input required={true} value={brewDate} valueChange={setBrewDate} name="brewDate" title="Brew Date: " />
                 </BrewInput>
-                <BrewInput>
+                {/*<BrewInput>
                     <Input required={true} value={supplier} valueChange={setSupplier} name="supplier" title="Supplier: " />
                 </BrewInput>
                 <BrewInput>
