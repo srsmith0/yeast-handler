@@ -12,9 +12,9 @@ const Dashboard = () => {
             <Link href='/user/fermentations'>
                 <DashButton>Current Yeast</DashButton>
             </Link>
-            <Link href='/user/pitches'>
+            {/* <Link href='/user/pitches'>
                 <DashButton>Pitch Schedule</DashButton>
-            </Link>
+            </Link> */}
             </DashDiv>
             
         </>
