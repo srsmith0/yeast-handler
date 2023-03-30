@@ -4,8 +4,9 @@ import styled from 'styled-components';
 
 import Input from '../utils/Input';
 
-const AddBrew = () => {
+const AddBrew = ({ yeasts }) => {
     const [brand, setBrand] = useState('');
+    const [yeast, setYeast] = useState({});
     const [fermenter, setFermenter] = useState('');
     const [batchSize, setBatchSize] = useState('');
     const [gravity, setGravity] = useState('');
@@ -13,6 +14,7 @@ const AddBrew = () => {
     
     const brew = {
         brand,
+        yeast,
         fermenter,
         batchSize,
         gravity
@@ -20,11 +22,12 @@ const AddBrew = () => {
 
     const clearData = () => {
         setBrand('');
+        setYeast({});
         setFermenter('');
         setBatchSize('');
         setGravity(''); 
+        setBrewDate('');
     };
-
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -33,11 +36,32 @@ const AddBrew = () => {
         clearData();
     };
 
+    const handleYeast = (ID) => {
+        const selectedYeast = yeasts.find(y => y.id === parseInt(ID))
+        setYeast(selectedYeast);
+    };
+
+    const displayYeast = () => {
+        return (
+            <div>
+            <select name="yeast" value={yeast} onChange={((e) => handleYeast((e.target.value)))}>
+                <option value="select">Select yeast</option>
+                {yeasts.map(y =>
+                    <option key={y.id} selected={yeast.id == y.id}value={y.id}>{`${y.strain}, G${y.gen}`}</option>)}
+            </select>
+            </div>
+        )
+    };
+
     return (
         <>
          <BrewForm id="brewForm" onSubmit={handleSubmit}>
                 <BrewInput>
                     <Input required={true} value={brand} valueChange={setBrand} name="brand" title="Brand: " />
+                </BrewInput>
+                <BrewInput>
+                        Choose Yeast Source: {displayYeast()} <br />
+                        {`${yeast.strain}, Gen ${yeast.gen}, ${yeast.current_tank}`}
                 </BrewInput>
                 <BrewInput>
                     <Input required={true} value={fermenter} valueChange={setFermenter} name="fermenter" title="Fermenter: " />
@@ -100,7 +124,7 @@ const BrewForm = styled.form`
     text-align: center;
     padding: 3rem;
 `
-const BrewInput = styled.span `
+const BrewInput = styled.div `
     margin: 1rem;
 `
 

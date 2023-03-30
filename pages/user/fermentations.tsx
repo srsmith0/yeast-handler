@@ -4,6 +4,7 @@ import HomeButton from "../../utils/HomeButton";
 
 import styled from 'styled-components';
 import DisplayYeast from "../../components/DisplayYeast";
+import AddBrew from "../../components/AddBrew";
 
 const Fermentations = () => {
     const [allYeast, setAllYeast] = useState([]);
@@ -61,6 +62,7 @@ const Fermentations = () => {
             }
         </YeastInfoContainer>
             <div><HomeButton /></div>
+            <div><AddBrew yeasts={allYeast}/></div>
         </PageDiv>
     )
 };

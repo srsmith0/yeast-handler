@@ -18,8 +18,8 @@ export default function handler(
             purchased_from : "BSI",
             quantity : "50 L",
             prop_type : "Two Step",
-            count_at_pitch : "6 million cells/mL"
-        
+            count_at_pitch : "6 million cells/mL",
+            history: []
 },
          {  id: 2,
             strain : "Augustiner",
@@ -33,7 +33,8 @@ export default function handler(
             purchased_from : "BSI",
             quantity : "70 L",
             prop_type : "Two Step",
-            count_at_pitch : "8 million cells/mL"
+            count_at_pitch : "8 million cells/mL",
+            history: []
     },
         {   id: 3,
             strain : "GO2",
@@ -47,7 +48,8 @@ export default function handler(
             purchased_from : "Imperial",
             quantity : "30 L",
             prop_type : "One Step",
-            count_at_pitch : "6.5 million cells/mL"
+            count_at_pitch : "6.5 million cells/mL",
+            history: []
 
     },
      {  id: 4,
@@ -62,7 +64,8 @@ export default function handler(
       purchased_from : "BSI",
       quantity : "70 L",
       prop_type : "Two Step",
-      count_at_pitch : "8 million cells/mL"
+      count_at_pitch : "8 million cells/mL",
+      history: []
 },
  {  id: 5,
   strain : "London III",
@@ -76,7 +79,8 @@ export default function handler(
   purchased_from : "BSI",
   quantity : "70 L",
   prop_type : "One Step",
-  count_at_pitch : "8 million cells/mL"
+  count_at_pitch : "8 million cells/mL",
+  history: []
 }]
 )};
 
