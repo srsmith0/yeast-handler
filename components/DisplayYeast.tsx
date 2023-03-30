@@ -15,7 +15,7 @@ const DisplayYeast = ({ yeast, hideInfo }) => {
         <p>Vendor: {yeast.purchased_from}</p>
         <p>Quantity Purchased: {yeast.quantity}</p>
         <p>Prop Type: {yeast.prop_type}</p> 
-        <button onClick={() => hideInfo()}>Hide me</button>
+        <button onClick={() => hideInfo()}>Close</button>
         </>
     )
 
