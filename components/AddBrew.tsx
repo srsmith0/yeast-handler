@@ -6,19 +6,19 @@ import Input from '../utils/Input';
 
 const AddBrew = ({ yeasts }) => {
     const [brand, setBrand] = useState('');
-    const [yeast, setYeast] = useState({});
+    const [yeast, setYeast] = useState('');
     const [fermenter, setFermenter] = useState('');
     const [batchSize, setBatchSize] = useState('');
     const [gravity, setGravity] = useState('');
     const [brewDate, setBrewDate] = useState('');
     
-    const brew = {
-        brand,
-        yeast,
-        fermenter,
-        batchSize,
-        gravity
-    };
+    // const brew = {
+    //     brand,
+    //     yeast,
+    //     fermenter,
+    //     batchSize,
+    //     gravity
+    // };
 
     const clearData = () => {
         setBrand('');
@@ -31,23 +31,32 @@ const AddBrew = ({ yeasts }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        const brew = {
+            brand,
+            yeast,
+            fermenter,
+            batchSize,
+            gravity
+        };
         //TODO: post to database
-        console.log(brew)
+        console.log(e.target)
         clearData();
     };
 
-    const handleYeast = (ID) => {
-        const selectedYeast = yeasts.find(y => y.id === parseInt(ID))
+    const handleYeast = (e) => {
+        //TODO: figure out how to show selection in drop box
+        let yeastID = parseInt(e.target.value)
+        const selectedYeast = yeasts.find(y => y.id === yeastID)
         setYeast(selectedYeast);
     };
 
     const displayYeast = () => {
         return (
             <div>
-            <select name="yeast" value={yeast} onChange={((e) => handleYeast((e.target.value)))}>
-                <option value="select">Select yeast</option>
+            <select name="yeast" value={yeast} onChange={handleYeast}>
+                {/* <option value="select">Select yeast</option> */}
                 {yeasts.map(y =>
-                    <option key={y.id} selected={yeast.id == y.id}value={y.id}>{`${y.strain}, G${y.gen}`}</option>)}
+                    <option key={y.id} selected={yeast.id === y.id} value={y.id}>{`${y.strain}, G${y.gen}`}</option>)}
             </select>
             </div>
         )
@@ -61,7 +70,7 @@ const AddBrew = ({ yeasts }) => {
                 </BrewInput>
                 <BrewInput>
                         Choose Yeast Source: {displayYeast()} <br />
-                        {`${yeast.strain}, Gen ${yeast.gen}, ${yeast.current_tank}`}
+                        Selected: {yeast === '' ? '' : `${yeast.strain}, Gen ${yeast.gen}, ${yeast.current_tank}`}
                 </BrewInput>
                 <BrewInput>
                     <Input required={true} value={fermenter} valueChange={setFermenter} name="fermenter" title="Fermenter: " />
