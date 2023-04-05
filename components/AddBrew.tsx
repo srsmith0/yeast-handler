@@ -44,19 +44,17 @@ const AddBrew = ({ yeasts }) => {
     };
 
     const handleYeast = (e) => {
-        //TODO: figure out how to show selection in drop box
-        let yeastID = parseInt(e.target.value)
-        const selectedYeast = yeasts.find(y => y.id === yeastID)
-        setYeast(selectedYeast);
+        let yeastIndex = e.target.value
+        setYeast(yeasts[yeastIndex]);
     };
 
     const displayYeast = () => {
         return (
             <>
-            <select id="yeast" name="yeast" value={yeast} onChange={handleYeast}>
-                {/* <option value="select">Select yeast</option> */}
-                {yeasts.map(y =>
-                    <option key={y.id} value={y.id}>{`${y.strain}, G${y.gen}`}</option>)}
+            <select required id="yeast" name="yeast" onChange={handleYeast}>
+                <option value="select">Select yeast</option>
+                {yeasts.map((yeast, index) =>
+                    <option key={index} value={index}>{`${yeast.strain}, G${yeast.gen}, ${yeast.current_tank}`}</option>)}
             </select>
             </>
         )
@@ -70,7 +68,6 @@ const AddBrew = ({ yeasts }) => {
                 </BrewInput>
                 <BrewInput>
                         <label htmlFor="yeast">Choose Yeast Source:</label> {displayYeast()} <br />
-                        Selected: {!yeast ? '' : `${yeast.strain}, Gen ${yeast.gen}, ${yeast.current_tank}`}
                 </BrewInput>
                 <BrewInput>
                     <Input required={true} value={fermenter} valueChange={setFermenter} name="fermenter" title="Fermenter: " />
