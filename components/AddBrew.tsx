@@ -52,13 +52,13 @@ const AddBrew = ({ yeasts }) => {
 
     const displayYeast = () => {
         return (
-            <div>
-            <select name="yeast" value={yeast} onChange={handleYeast}>
+            <>
+            <select id="yeast" name="yeast" value={yeast} onChange={handleYeast}>
                 {/* <option value="select">Select yeast</option> */}
                 {yeasts.map(y =>
-                    <option key={y.id} selected={yeast.id === y.id} value={y.id}>{`${y.strain}, G${y.gen}`}</option>)}
+                    <option key={y.id} value={y.id}>{`${y.strain}, G${y.gen}`}</option>)}
             </select>
-            </div>
+            </>
         )
     };
 
@@ -69,8 +69,8 @@ const AddBrew = ({ yeasts }) => {
                     <Input required={true} value={brand} valueChange={setBrand} name="brand" title="Brand: " />
                 </BrewInput>
                 <BrewInput>
-                        Choose Yeast Source: {displayYeast()} <br />
-                        Selected: {yeast === '' ? '' : `${yeast.strain}, Gen ${yeast.gen}, ${yeast.current_tank}`}
+                        <label htmlFor="yeast">Choose Yeast Source:</label> {displayYeast()} <br />
+                        Selected: {!yeast ? '' : `${yeast.strain}, Gen ${yeast.gen}, ${yeast.current_tank}`}
                 </BrewInput>
                 <BrewInput>
                     <Input required={true} value={fermenter} valueChange={setFermenter} name="fermenter" title="Fermenter: " />
