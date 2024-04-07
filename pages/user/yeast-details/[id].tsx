@@ -6,7 +6,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     const { query } = context
     const res = await fetch('http://localhost:3000/api/dummyData')
     const yeasts = await res.json()
-
+//test commit
   return {
     props: {
       query, yeasts
